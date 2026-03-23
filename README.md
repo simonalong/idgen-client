@@ -1,4 +1,4 @@
-# cbb-aiot-proto-idgen
+# idgen-client
 
 发号器客户端
 
