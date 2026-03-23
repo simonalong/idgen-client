@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+option go_package = "github.com/simonalong/idgen-client";
+
+package idgen;
+
+service Buffer {
+    rpc AllocateNew(BufferAllocateReq) returns (BufferAllocateRsp) {}
+}
+
+message BufferAllocateReq {
+    string serviceName = 1;  // test
+    string module      = 2;  // test
+    int64 bufferSize   = 3;  // test
+}
+
+message BufferAllocateRsp {
+    int64 startIndex = 1;
+}

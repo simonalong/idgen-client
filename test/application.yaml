@@ -1,0 +1,43 @@
+gole:
+  server:
+    enable: true
+    port: 8080
+    gin:
+      # 有三种模式：debug/release/test，默认 release
+      mode: debug
+      pprof:
+        enable: true
+
+#  grpc:
+#    enable: true
+#    register:
+#      enable: true
+#      type: natsJs
+#    cbb-mid-srv-idgen:
+#      # 服务端在注册中心注册的服务名列表
+#      service-name: cbb-mid-srv-idgen
+#      connect-params:
+#        # MinConnectTimeout是我们愿意提供连接完成的最短时间。
+#        min-connect-timeout: 10s
+  grpc:
+    enable: true
+    # 发号器的服务端配置
+    cbb-mid-srv-idgen:
+      host: 192.168.1.83
+      port: 30863
+      # 如下最小连接超时时间请务必添加，否则可能连接不上
+      connect-params:
+        min-connect-timeout: 10s
+# 发号器客户端配置
+cbb:
+  idgen:
+    # 服务名（少于64个字符）
+    service_name: idgen_client_test
+    modules:
+      - module: test_module1  # 业务对应的模块（少于64个字符）
+        buffer_size: 10 # buffer大小，最少为10
+      - module: test_module2  # 业务对应的模块（少于64个字符）
+        buffer_size: 10 # buffer大小，最少为10
+      - module: test_module2_big  # 业务对应的模块（少于64个字符）
+        buffer_size: 1000000 # buffer大小，最少为10
+
